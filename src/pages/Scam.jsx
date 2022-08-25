@@ -1,5 +1,5 @@
 import React from 'react'
-import EnhancedTable from '../component/Table'
+import ScamTable from '../component/ScamTable'
 import Banner from '../component/Banner'
 import  data from  "../sampleData.json"; 
 import { useQuery, gql } from "@apollo/client"; 
@@ -11,7 +11,7 @@ const TRIPS_QUERY = gql`
       count
       numberOfVehicles
     }
-    entries(orderBy: timeOut, orderDirection: desc, first: 50) {
+     scams(orderBy: timeOut, orderDirection: desc, first: 50) {
       id
       txHash
       block
@@ -24,9 +24,10 @@ const TRIPS_QUERY = gql`
 function Dashboard() {
 
     const { data, loading, error } = useQuery(TRIPS_QUERY,{
-      pollInterval: 500,
+      pollInterval: 50,
     });
 
+    
     console.log(data);
   
     if (error) return <pre>{error.message}</pre>; 
@@ -40,7 +41,7 @@ function Dashboard() {
           ) : (
             <>
               <Banner countData={data.tripData} />
-              <EnhancedTable data={data.entries} />
+              <ScamTable data={data.scams} />
             </>
           )}
         </div>

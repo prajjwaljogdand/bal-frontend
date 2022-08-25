@@ -16,7 +16,6 @@ import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import Link from '@mui/material/Link';
-import {useNavigate} from "react-router-dom" 
 
 function createData(id, name, tx, mine, timeIn, timeOut, createdAt) {
   const d = new Date(createdAt * 1000);
@@ -70,12 +69,12 @@ const headCells = [
     disablePadding: false,
     label: "Id",
   },
-  {
-    id: "name",
-    numeric: false,
-    disablePadding: true,
-    label: "Registration No.",
-  },
+//   {
+//     id: "name",
+//     numeric: false,
+//     disablePadding: true,
+//     label: "Registration No.",
+//   },
   {
     id: "tx",
     numeric: false,
@@ -102,7 +101,7 @@ const headCells = [
   },
 ];
 
-function EnhancedTableHead(props) {
+function VehicleTableHead(props) {
   // const createSortHandler = (property) => (event) => {
   //   onRequestSort(event, property);
   // };
@@ -124,12 +123,12 @@ function EnhancedTableHead(props) {
   );
 }
 
-EnhancedTableHead.propTypes = {
+VehicleTableHead.propTypes = {
   numSelected: PropTypes.number,
   rowCount: PropTypes.number.isRequired,
 };
 
-const EnhancedTableToolbar = (props) => {
+const VehicleTableToolbar = (props) => {
   const { numSelected } = props;
 
   return (
@@ -163,11 +162,11 @@ const EnhancedTableToolbar = (props) => {
   );
 };
 
-EnhancedTableToolbar.propTypes = {
+VehicleTableToolbar.propTypes = {
   numSelected: PropTypes.number,
 };
 
-export default function EnhancedTable(props) {
+export default function VehicleTable(props) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -185,11 +184,9 @@ export default function EnhancedTable(props) {
     );
   });
 
-  const navigate = useNavigate();
+  console.log(rows);
 
   const handleClick = (event, name) => {
-    console.log(name);
-    navigate(`/vehicle/id=${name}`);
     return;
   };
 
@@ -202,8 +199,6 @@ export default function EnhancedTable(props) {
     setPage(0);
   };
 
-
-
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
@@ -211,14 +206,14 @@ export default function EnhancedTable(props) {
   return (
     <Box sx={{ width: "80%", margin: "auto", marginTop: "10px" }}>
       <Paper elevation={6} sx={{ width: "100%", mb: 2,border: "0.01px solid #3D95DF" }}>
-        <EnhancedTableToolbar />
+        <VehicleTableToolbar />
         <TableContainer>
           <Table
             sx={{ minWidth: 750 }}
             aria-labelledby="tableTitle"
             size={"medium"}
           >
-            <EnhancedTableHead rowCount={rows.length} />
+            <VehicleTableHead rowCount={rows.length} />
             <TableBody>
               {rows
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
@@ -228,19 +223,19 @@ export default function EnhancedTable(props) {
                   return (
                     <TableRow
                       hover
+                      onClick={(event) => handleClick(event, row.name)}
                       tabIndex={-1}
                       key={row.id}
                     >
                       <TableCell id={labelId}>{row.id}</TableCell>
-                      <TableCell
+                      {/* <TableCell
                         component="th"
                         id={labelId}
                         scope="row"
                         padding="none"
-                        onClick={(event) => handleClick(event, row.name)}
                       >
                         {row.name}
-                      </TableCell>
+                      </TableCell> */}
                       <TableCell
                         sx={{
                           maxWidth: 150, // Percentage Also Works

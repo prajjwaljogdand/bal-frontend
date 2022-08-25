@@ -9,10 +9,10 @@ export default function Banner(props) {
         <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 0, sm: 2}}>
         <Stack spacing={1} p={4} pb={{ xs: 0, sm: 2}} >
           <Typography variant="h6" component="h6">
-            Total Vehicles
+            Registration Number
           </Typography>
           <Typography variant="h4" component="h4">
-          {props.countData.numberOfVehicles}
+          {props.countData.id}
           </Typography>
         </Stack>
         <Stack spacing={1} p={4}>
@@ -20,7 +20,7 @@ export default function Banner(props) {
           Total Transports
           </Typography>
           <Typography variant="h4" component="h4">
-          {props.countData.count}
+          {props.countData.numberOfTrips}
           </Typography>
         </Stack>
       </Stack>

@@ -10,7 +10,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import mainTheme from './muiTheme';
 
 const client = new ApolloClient({
-  uri: "https://api.thegraph.com/subgraphs/name/prajjwaljogdand/bal",
+  uri: "https://api.thegraph.com/subgraphs/name/prajjwaljogdand/s",
   cache: new InMemoryCache(),
 });
 

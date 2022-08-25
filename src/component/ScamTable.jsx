@@ -16,11 +16,12 @@ import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import Link from '@mui/material/Link';
-import {useNavigate} from "react-router-dom" 
+import BlockIcon from '@mui/icons-material/Block'; 
 
 function createData(id, name, tx, mine, timeIn, timeOut, createdAt) {
   const d = new Date(createdAt * 1000);
   const created = d.toLocaleString();
+  const isBlocked =  true;
 
   return {
     id,
@@ -30,38 +31,11 @@ function createData(id, name, tx, mine, timeIn, timeOut, createdAt) {
     timeIn,
     timeOut,
     created,
+    isBlocked,
   };
 }
 
-// function descendingComparator(a, b, orderBy) {
-//   if (b[orderBy] < a[orderBy]) {
-//     return -1;
-//   }
-//   if (b[orderBy] > a[orderBy]) {
-//     return 1;
-//   }
-//   return 0;
-// }
 
-// function getComparator(order, orderBy) {
-//   return order === "desc"
-//     ? (a, b) => descendingComparator(a, b, orderBy)
-//     : (a, b) => -descendingComparator(a, b, orderBy);
-// }
-
-// // This method is created for cross-browser compatibility, if you don't
-// // need to support IE11, you can use Array.prototype.sort() directly
-// function stableSort(array, comparator) {
-//   const stabilizedThis = array.map((el, index) => [el, index]);
-//   stabilizedThis.sort((a, b) => {
-//     const order = comparator(a[0], b[0]);
-//     if (order !== 0) {
-//       return order;
-//     }
-//     return a[1] - b[1];
-//   });
-//   return stabilizedThis.map((el) => el[0]);
-// }
 
 const headCells = [
   {
@@ -100,9 +74,15 @@ const headCells = [
     disablePadding: false,
     label: "createdAt",
   },
+  {
+    id: "isBlocked",
+    numeric: false,
+    disablePadding: false,
+    label: "Status",
+  },
 ];
 
-function EnhancedTableHead(props) {
+function ScamTableHead(props) {
   // const createSortHandler = (property) => (event) => {
   //   onRequestSort(event, property);
   // };
@@ -124,12 +104,12 @@ function EnhancedTableHead(props) {
   );
 }
 
-EnhancedTableHead.propTypes = {
+ScamTableHead.propTypes = {
   numSelected: PropTypes.number,
   rowCount: PropTypes.number.isRequired,
 };
 
-const EnhancedTableToolbar = (props) => {
+const ScamTableToolbar = (props) => {
   const { numSelected } = props;
 
   return (
@@ -163,11 +143,11 @@ const EnhancedTableToolbar = (props) => {
   );
 };
 
-EnhancedTableToolbar.propTypes = {
+ScamTableToolbar.propTypes = {
   numSelected: PropTypes.number,
 };
 
-export default function EnhancedTable(props) {
+export default function ScamTable(props) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -185,11 +165,9 @@ export default function EnhancedTable(props) {
     );
   });
 
-  const navigate = useNavigate();
+  console.log(rows);
 
   const handleClick = (event, name) => {
-    console.log(name);
-    navigate(`/vehicle/id=${name}`);
     return;
   };
 
@@ -202,8 +180,6 @@ export default function EnhancedTable(props) {
     setPage(0);
   };
 
-
-
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
@@ -211,14 +187,14 @@ export default function EnhancedTable(props) {
   return (
     <Box sx={{ width: "80%", margin: "auto", marginTop: "10px" }}>
       <Paper elevation={6} sx={{ width: "100%", mb: 2,border: "0.01px solid #3D95DF" }}>
-        <EnhancedTableToolbar />
+        <ScamTableToolbar />
         <TableContainer>
           <Table
             sx={{ minWidth: 750 }}
             aria-labelledby="tableTitle"
             size={"medium"}
           >
-            <EnhancedTableHead rowCount={rows.length} />
+            <ScamTableHead rowCount={rows.length} />
             <TableBody>
               {rows
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
@@ -228,6 +204,7 @@ export default function EnhancedTable(props) {
                   return (
                     <TableRow
                       hover
+                      onClick={(event) => handleClick(event, row.name)}
                       tabIndex={-1}
                       key={row.id}
                     >
@@ -237,13 +214,12 @@ export default function EnhancedTable(props) {
                         id={labelId}
                         scope="row"
                         padding="none"
-                        onClick={(event) => handleClick(event, row.name)}
                       >
                         {row.name}
                       </TableCell>
                       <TableCell
                         sx={{
-                          maxWidth: 150, // Percentage Also Works
+                          maxWidth: 180, // Percentage Also Works
                           whiteSpace: "nowrap",
                           overflow: "hidden",
                           textOverflow: "ellipsis",
@@ -255,6 +231,7 @@ export default function EnhancedTable(props) {
                       {/* <TableCell>{row.timeIn}</TableCell> */}
                       <TableCell>{row.timeOut}</TableCell>
                       <TableCell>{row.created}</TableCell>
+                      <TableCell>{row.isBlocked ? <BlockIcon sx={{ color: "#FE3131" }}/> : "" }</TableCell>
                     </TableRow>
                   );
                 })}
