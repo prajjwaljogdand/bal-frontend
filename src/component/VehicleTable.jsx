@@ -204,7 +204,7 @@ export default function VehicleTable(props) {
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
   return (
-    <Box sx={{ width: "80%", margin: "auto", marginTop: "10px" }}>
+    <Box sx={{ width: "48%", margin: "auto", marginTop: "10px" }}>
       <Paper elevation={6} sx={{ width: "100%", mb: 2,border: "0.01px solid #3D95DF" }}>
         <VehicleTableToolbar />
         <TableContainer>
@@ -244,7 +244,7 @@ export default function VehicleTable(props) {
                           textOverflow: "ellipsis",
                         }}
                       >
-                       <Link href={`https://goerli.etherscan.io/tx/${row.tx}`}color='#00EDB4' underline="none" target="_blank"> {row.tx} </Link> 
+                       <Link href={`https://goerli.etherscan.io/tx/${row.tx}`} color='#009571'  underline="none" target="_blank"> {row.tx} </Link> 
                       </TableCell>
                       <TableCell>{row.mine}</TableCell>
                       {/* <TableCell>{row.timeIn}</TableCell> */}

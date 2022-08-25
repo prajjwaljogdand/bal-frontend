@@ -1,7 +1,6 @@
-import React from 'react'
+import {React }from 'react'
 import EnhancedTable from '../component/Table'
 import Banner from '../component/Banner'
-import  data from  "../sampleData.json"; 
 import { useQuery, gql } from "@apollo/client"; 
 import Header from "../component/Header";
 
@@ -23,11 +22,10 @@ const TRIPS_QUERY = gql`
 `;
 function Dashboard() {
 
-    const { data, loading, error } = useQuery(TRIPS_QUERY,{
+    let { data, loading, error } = useQuery(TRIPS_QUERY,{
       pollInterval: 500,
     });
 
-    console.log(data);
   
     if (error) return <pre>{error.message}</pre>; 
 

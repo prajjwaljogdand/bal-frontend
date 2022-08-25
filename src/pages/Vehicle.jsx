@@ -1,14 +1,13 @@
-import { React, useState, useEffect } from "react";
+import { React } from "react";
 import VehicleTable from "../component/VehicleTable";
-import data from "../sampleData.json";
 import { useQuery, gql } from "@apollo/client";
 import Header from "../component/Header";
 import VehicleBanner from "../component/VehicleBanner";
 import { useParams } from "react-router-dom";
-import { useLazyQuery } from "@apollo/client";
+import WeightChart from "../component/WeightChart";
+import { Paper, Stack, Typography } from "@mui/material";
 
 function Vehicle(props) {
-
   let { id } = useParams();
   const vehicleId = id.slice(3);
 
@@ -17,7 +16,7 @@ function Vehicle(props) {
       id
       numberOfTrips
     }
-    entries(where: { truckId : "${vehicleId}" }) {
+    entries(where: {truckId : "${vehicleId}" }, orderBy: timeOut, orderDirection: desc,) {
       id
       txHash
       block
@@ -25,9 +24,9 @@ function Vehicle(props) {
       timeOut
       weight
     }
-  }`
+  }`;
 
-  const TRIPS_QUERY = gql(sew)
+  const TRIPS_QUERY = gql(sew);
 
   const { data, loading, error } = useQuery(TRIPS_QUERY, {
     pollInterval: 500,
@@ -45,7 +44,10 @@ function Vehicle(props) {
         ) : (
           <>
             <VehicleBanner countData={data.vehicle} />
-            <VehicleTable data={data.entries} />
+            <Stack direction="row" spacing={2}>
+              <VehicleTable data={data.entries} />
+              <WeightChart data={data.entries} />
+            </Stack>
           </>
         )}
       </div>

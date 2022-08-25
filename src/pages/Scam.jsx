@@ -1,7 +1,6 @@
 import React from 'react'
 import ScamTable from '../component/ScamTable'
-import Banner from '../component/Banner'
-import  data from  "../sampleData.json"; 
+import Banner from '../component/Banner' 
 import { useQuery, gql } from "@apollo/client"; 
 import Header from "../component/Header";
 

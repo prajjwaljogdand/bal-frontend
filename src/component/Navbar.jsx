@@ -13,14 +13,14 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-
+import {useNavigate} from "react-router-dom" 
 const drawerWidth = 240;
-const navItems = ['Home', 'About', 'Contact'];
+const navItems = ['Home', 'Scam'];
 
 function Navbar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
+  const navigate = useNavigate();
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -76,6 +76,7 @@ function Navbar(props) {
             {navItems.map((navItem) => (
               <Button
                 key={navItem}
+                onClick={()=>navigate(`/${navItem}`)}
                 sx={{ my: 2, color: 'white', display: 'block', paddingX : "1.5rem !important" }}
               >
                 {navItem}

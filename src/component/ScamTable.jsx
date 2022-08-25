@@ -15,13 +15,14 @@ import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import FilterListIcon from "@mui/icons-material/FilterList";
-import Link from '@mui/material/Link';
-import BlockIcon from '@mui/icons-material/Block'; 
+import Link from "@mui/material/Link";
+import BlockIcon from "@mui/icons-material/Block";
+import { Stack } from "@mui/material";
 
 function createData(id, name, tx, mine, timeIn, timeOut, createdAt) {
   const d = new Date(createdAt * 1000);
   const created = d.toLocaleString();
-  const isBlocked =  true;
+  const isBlocked = true;
 
   return {
     id,
@@ -34,8 +35,6 @@ function createData(id, name, tx, mine, timeIn, timeOut, createdAt) {
     isBlocked,
   };
 }
-
-
 
 const headCells = [
   {
@@ -152,7 +151,7 @@ export default function ScamTable(props) {
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   let rows = [];
- 
+
   rows = props.data.map((obj) => {
     return createData(
       obj.block,
@@ -186,7 +185,10 @@ export default function ScamTable(props) {
 
   return (
     <Box sx={{ width: "80%", margin: "auto", marginTop: "10px" }}>
-      <Paper elevation={6} sx={{ width: "100%", mb: 2,border: "0.01px solid #3D95DF" }}>
+      <Paper
+        elevation={6}
+        sx={{ width: "100%", mb: 2, border: "0.01px solid #3D95DF" }}
+      >
         <ScamTableToolbar />
         <TableContainer>
           <Table
@@ -225,13 +227,30 @@ export default function ScamTable(props) {
                           textOverflow: "ellipsis",
                         }}
                       >
-                       <Link href={`https://goerli.etherscan.io/tx/${row.tx}`}color='#00EDB4' underline="none" target="_blank"> {row.tx} </Link> 
+                        <Link
+                          href={`https://goerli.etherscan.io/tx/${row.tx}`}
+                          color="#00EDB4"
+                          underline="none"
+                          target="_blank"
+                        >
+                          {" "}
+                          {row.tx}{" "}
+                        </Link>
                       </TableCell>
                       <TableCell>{row.mine}</TableCell>
                       {/* <TableCell>{row.timeIn}</TableCell> */}
                       <TableCell>{row.timeOut}</TableCell>
                       <TableCell>{row.created}</TableCell>
-                      <TableCell>{row.isBlocked ? <BlockIcon sx={{ color: "#FE3131" }}/> : "" }</TableCell>
+                      <TableCell>
+                        {row.isBlocked ? (
+                          <Stack direction="row">
+                            <BlockIcon sx={{ color: "#FE3131" }} />{" "}
+                            <Typography sx={{px : 2}}>blocked</Typography>{" "}
+                          </Stack>
+                        ) : (
+                          ""
+                        )}
+                      </TableCell>
                     </TableRow>
                   );
                 })}

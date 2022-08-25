@@ -249,7 +249,7 @@ export default function EnhancedTable(props) {
                           textOverflow: "ellipsis",
                         }}
                       >
-                       <Link href={`https://goerli.etherscan.io/tx/${row.tx}`}color='#00EDB4' underline="none" target="_blank"> {row.tx} </Link> 
+                       <Link href={`https://goerli.etherscan.io/tx/${row.tx}`}color='#009571' underline="none" target="_blank"> {row.tx} </Link> 
                       </TableCell>
                       <TableCell>{row.mine}</TableCell>
                       {/* <TableCell>{row.timeIn}</TableCell> */}

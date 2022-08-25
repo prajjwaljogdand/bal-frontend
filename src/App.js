@@ -12,7 +12,7 @@ function App() {
       <header className="App-header">
         <Navbar/>
         <Routes>
-          <Route path="/" element={<Dashboard/>} />
+          <Route path="/home" element={<Dashboard/>} />
           <Route path="/vehicle/:id" element={<Vehicle/>} />
           <Route path="/scam" element={<Scam/>} />
         </Routes>

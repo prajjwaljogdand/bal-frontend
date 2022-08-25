@@ -7,15 +7,15 @@ export const FONTS = {
 };
 
 export const PALETTE = {
-  mode: 'dark',
+  mode: 'light',
   background: {
-    default:'rgba(18, 18, 22, 1)', //'rgba(31, 32, 40, 1)'
-    paper: 'rgba(24, 24, 32, 1)', //rgba(40, 41, 49, 1)',
+    default:'rgba(255, 255, 255, 1)', //'rgba(31, 32, 40, 1)'
+    paper: 'rgba(255, 255, 255, 1)', //rgba(40, 41, 49, 1)',
     black: '#1F2028',
   },
   primary: {
     light: '#EBBF6E',
-    main: 'rgba(255, 255, 255, 1)',
+    main: 'rgba(0, 0, 0, 1)',
     dark: 'var(--color-blue-hover)',
   },
   secondary: {
@@ -24,7 +24,7 @@ export const PALETTE = {
     dark: 'rgba(31, 32, 40, 1)',
   },
   text: {
-    primary: 'rgba(255, 255, 255, 1)',
+    primary: 'rgba(0, 0, 0, 1)',
     secondary: 'rgba(149, 151, 161, 1)',
     disabled: 'rgba(161, 161, 161, 1)',
   },
