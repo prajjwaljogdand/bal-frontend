@@ -1,8 +1,13 @@
 import React from 'react'
+import EnhancedTable from '../component/Table'
+import Banner from '../component/Banner'
 
 function Dashboard() {
   return (
-    <div>SIH2022</div>
+    <div>
+        <Banner countData={{}} />
+        <EnhancedTable data={[{},{}]} />
+    </div>
   )
 }
 
