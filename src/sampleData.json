@@ -1,0 +1,90 @@
+{
+  "data": {
+    "tripData": {
+      "count": "81",
+      "numberOfVehicles": "62"
+    },
+    "entries": [
+      {
+        "id": "0xdbe0ab852807643c435fbd37247e2a2ab7a2d3de62d97abe4a14ba95b95e3c03",
+        "txHash": "0xdbe0ab852807643c435fbd37247e2a2ab7a2d3de62d97abe4a14ba95b95e3c03",
+        "block": "7453659",
+        "truckId": "CSWX9",
+        "timeOut": "1661201460",
+        "weight": "940"
+      },
+      {
+        "id": "0xb7ad349917cce2892e957ca8d55002c4b453f7749bb0c834b2511e5d800efe7e",
+        "txHash": "0xb7ad349917cce2892e957ca8d55002c4b453f7749bb0c834b2511e5d800efe7e",
+        "block": "7453657",
+        "truckId": "CSWX9",
+        "timeOut": "1661201412",
+        "weight": "845"
+      },
+      {
+        "id": "0x0a16af31cb80419af07d9190195a0b8be8ec0c537212077657ba86676a638fb1",
+        "txHash": "0x0a16af31cb80419af07d9190195a0b8be8ec0c537212077657ba86676a638fb1",
+        "block": "7453649",
+        "truckId": "J7DI8",
+        "timeOut": "1661201304",
+        "weight": "666"
+      },
+      {
+        "id": "0xe23a053f49d9e1c320b9bc45de72fef6f4acc8bb6afb5f7eb8b3373ecb33429b",
+        "txHash": "0xe23a053f49d9e1c320b9bc45de72fef6f4acc8bb6afb5f7eb8b3373ecb33429b",
+        "block": "7453647",
+        "truckId": "J7DI8",
+        "timeOut": "1661201280",
+        "weight": "459"
+      },
+      {
+        "id": "0x2344855b41050369659291794fc7c19347d8e7baf28d46e6a43852db7f59302c",
+        "txHash": "0x2344855b41050369659291794fc7c19347d8e7baf28d46e6a43852db7f59302c",
+        "block": "7453645",
+        "truckId": "J7DI8",
+        "timeOut": "1661201256",
+        "weight": "256"
+      },
+      {
+        "id": "0x93fd085448d2a78cf27986d7c4b565392de607615617f5a2715bba531938154e",
+        "txHash": "0x93fd085448d2a78cf27986d7c4b565392de607615617f5a2715bba531938154e",
+        "block": "7453642",
+        "truckId": "J7DI8",
+        "timeOut": "1661201220",
+        "weight": "474"
+      },
+      {
+        "id": "0x1e81d7c5c6018ac1903fa832025d72fa73bfa6799e8c15a13ff0e15363af6aa5",
+        "txHash": "0x1e81d7c5c6018ac1903fa832025d72fa73bfa6799e8c15a13ff0e15363af6aa5",
+        "block": "7453638",
+        "truckId": "J7DI8",
+        "timeOut": "1661201172",
+        "weight": "438"
+      },
+      {
+        "id": "0xee7a8ee27c17fc0676bcc83f769bbccb465b10bb1f2ecf9834f5738b4d0ceee9",
+        "txHash": "0xee7a8ee27c17fc0676bcc83f769bbccb465b10bb1f2ecf9834f5738b4d0ceee9",
+        "block": "7453636",
+        "truckId": "J7DI8",
+        "timeOut": "1661201148",
+        "weight": "541"
+      },
+      {
+        "id": "0x08f097c9eab6c9fd80383b09eaf8cddb4363eecbc0649a4f854cd5ba52731dc3",
+        "txHash": "0x08f097c9eab6c9fd80383b09eaf8cddb4363eecbc0649a4f854cd5ba52731dc3",
+        "block": "7453634",
+        "truckId": "J7DI8",
+        "timeOut": "1661201112",
+        "weight": "49"
+      },
+      {
+        "id": "0xd8728d2a28d22ac03b8b5c14089228bda5d1fb396dcdf3638f00d66f3da70884",
+        "txHash": "0xd8728d2a28d22ac03b8b5c14089228bda5d1fb396dcdf3638f00d66f3da70884",
+        "block": "7453623",
+        "truckId": "HHKJY",
+        "timeOut": "1661200932",
+        "weight": "172"
+      }
+    ]
+  }
+}

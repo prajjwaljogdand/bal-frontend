@@ -1,6 +1,6 @@
 import Navbar from "./component/Navbar";
 import Dashboard from "./pages/Dashboard";
-import {Routes, Route ,Link} from  "react-router-dom";
+import {Routes, Route} from  "react-router-dom";
 import Vehicle from "./pages/Vehicle";
 import "./styles/App.css";
 
