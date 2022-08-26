@@ -11,7 +11,9 @@ const options = {
 
 const createData = (data) => {
   const chartData = data.map((row) => {
-    return [row.timeOut, Number(row.weight), 200];
+    const d = new Date(row.timeOut * 1000);
+    const created = d.toLocaleString();
+    return [created , Number(row.weight), 4000];
   });
 
   const finalData = [["timeOut", "Weight", "Threshold"], ...chartData];

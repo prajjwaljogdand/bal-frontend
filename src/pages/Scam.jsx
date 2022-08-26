@@ -10,7 +10,7 @@ const TRIPS_QUERY = gql`
       count
       numberOfVehicles
     }
-     scams(orderBy: timeOut, orderDirection: desc, first: 50) {
+     scams(orderBy: timeOut, orderDirection: desc, first: 10) {
       id
       txHash
       block

@@ -18,12 +18,29 @@ import FilterListIcon from "@mui/icons-material/FilterList";
 import Link from "@mui/material/Link";
 import BlockIcon from "@mui/icons-material/Block";
 import { Stack } from "@mui/material";
+import Contract from "../web3/Contract"
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
-function createData(id, name, tx, mine, timeIn, timeOut, createdAt) {
+const bal = Contract();
+
+const isLegit = async (truckId) => {
+    const legit = await bal.legit(truckId)
+    console.log(legit)
+    return legit;
+}
+ 
+
+ function createData(id, name, tx, mine, timeIn, timeOut, createdAt) {
   const d = new Date(createdAt * 1000);
   const created = d.toLocaleString();
-  const isBlocked = true;
+  let isBlocked;
+  isLegit(name).then((res)=>{
+    isBlocked = !res;
+  }
 
+  );
+
+  
   return {
     id,
     name,
@@ -150,6 +167,7 @@ export default function ScamTable(props) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
+ 
   let rows = [];
 
   rows = props.data.map((obj) => {
@@ -165,6 +183,7 @@ export default function ScamTable(props) {
   });
 
   console.log(rows);
+
 
   const handleClick = (event, name) => {
     return;
@@ -203,6 +222,7 @@ export default function ScamTable(props) {
                 .map((row, index) => {
                   const labelId = `enhanced-table-checkbox-${index}`;
 
+                  console.log(row)
                   return (
                     <TableRow
                       hover
@@ -248,7 +268,12 @@ export default function ScamTable(props) {
                             <Typography sx={{px : 2}}>blocked</Typography>{" "}
                           </Stack>
                         ) : (
-                          ""
+                          <>
+                           <Stack direction="row">
+                            <BlockIcon sx={{ color: "#FE3131" }} />{" "}
+                            <Typography sx={{px : 2}}>blocked</Typography>{" "}
+                          </Stack>
+                          </>
                         )}
                       </TableCell>
                     </TableRow>
